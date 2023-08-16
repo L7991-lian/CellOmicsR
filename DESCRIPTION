@@ -1,0 +1,19 @@
+Package: CellOmicsR
+Title: Package For Bioinformatics Research
+Version: 0.0.0.9000
+Authors@R: 
+    person("Li", "Jinlian", , "li_jinlian@gibh.ac.cn", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-0391-2828"))
+Description: CellOmicsR is a comprehensive and versatile software package designed for bioinformatics research and analysis. It provides a wide range of tools and functions to facilitate the processing, analysis, and interpretation of biological data, making it an essential resource for researchers and data scientists.
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Imports: 
+    ggplot2
+Depends: 
+    tidyverse
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
