@@ -1,10 +1,16 @@
 ---
-title: "CellOmicsR-Tutortail"
+title: "CellOmicsR-Tutorial"
 author: "Jinlian Li"
 date: "`r Sys.Date()`"
 output:
-  html_vignette:
-    css: styles.css
+  prettydoc::html_pretty:
+    # theme: cayman # 1
+    # theme: tactile #2
+    # theme: architect #3
+    # theme: leonids #4
+    theme: hpstr #5
+    highlight: github
+    # highlight: vignette
 ---
 
 ```{r setup, include = T, echo=FALSE}
@@ -17,27 +23,43 @@ knitr::opts_chunk$set(
 `CellOmicsR` is designed for bioinformatics research and analysis. 
 
 ## Vignette Info
+
 This vignette shows how to use CellOmicsR function.
+
 ```{r, include=TRUE, eval=FALSE}
 install.packages("devtools")
+
 devtools::install_github("L7991-lian/CellOmicsR")
-library(CellOmicsR)
+
 ```
 
 ## plot stacked bar
-### input data
+
+### (1)input data
+
+```{r}
+library(CellOmicsR)
+```
+
 ```{r}
 # input data: a data.frame 
 cell_data <- data.frame( Sample = rep(c("Sample1", "Sample2", "Sample3"), each = 4),Type = rep(c("Type1", "Type2", "Type3", "Type4"), 3),Count = c(10, 15, 8, 6, 5, 7, 12, 9, 3, 6, 4, 11))
+```
+
+```{r}
 head(cell_data)
 ```
-### plot
-```{r}
+
+### (2)plot
+```{r, eval=TRUE}
 bar_p <- CellOmicsR::plot_stacked_bar(data = cell_data, x_col = Sample, stack_col = Count, fill_col = Type)
+
 bar_p
 ```
+
 
 footnotes^[plot_stacked_bar will return a bar plot]
 
 > "He who gives up [code] safety for [code] speed deserves neither."
 ([via](https://github.com/L7991-lian))
+
