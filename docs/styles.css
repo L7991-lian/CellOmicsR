@@ -1,0 +1,12 @@
+/* Example CSS styles */
+body {
+  font-size: 24px; /* 修改整个body中的字体大小 */
+}
+
+h1 {
+  font-size: 28px; /* 修改h1标签中的字体大小 */
+}
+
+p {
+  font-size: 24px; /* 修改p标签中的字体大小 */
+}

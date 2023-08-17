@@ -1,0 +1,43 @@
+---
+title: "CellOmicsR-Tutortail"
+author: "Jinlian Li"
+date: "`r Sys.Date()`"
+output:
+  html_vignette:
+    css: styles.css
+---
+
+```{r setup, include = T, echo=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+`CellOmicsR` is designed for bioinformatics research and analysis. 
+
+## Vignette Info
+This vignette shows how to use CellOmicsR function.
+```{r, include=TRUE, eval=FALSE}
+install.packages("devtools")
+devtools::install_github("L7991-lian/CellOmicsR")
+library(CellOmicsR)
+```
+
+## plot stacked bar
+### input data
+```{r}
+# input data: a data.frame 
+cell_data <- data.frame( Sample = rep(c("Sample1", "Sample2", "Sample3"), each = 4),Type = rep(c("Type1", "Type2", "Type3", "Type4"), 3),Count = c(10, 15, 8, 6, 5, 7, 12, 9, 3, 6, 4, 11))
+head(cell_data)
+```
+### plot
+```{r}
+bar_p <- CellOmicsR::plot_stacked_bar(data = cell_data, x_col = Sample, stack_col = Count, fill_col = Type)
+bar_p
+```
+
+footnotes^[plot_stacked_bar will return a bar plot]
+
+> "He who gives up [code] safety for [code] speed deserves neither."
+([via](https://github.com/L7991-lian))

@@ -28,7 +28,9 @@ plot_stacked_bar <- function(data, x_col, stack_col, fill_col) {
     labs(x = as_label(enquo(x_col)), y = as_label(enquo(stack_col)), fill = "Cell Type") +
     theme_minimal()+
     theme(panel.grid = element_blank(),
-          text = element_text(size = 18))
+          text = element_text(size = 18),
+          axis.title.x = element_blank(),
+          axis.title.y = element_blank())
 
   return(p)
 }
