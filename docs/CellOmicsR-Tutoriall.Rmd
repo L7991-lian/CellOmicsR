@@ -28,29 +28,52 @@ This vignette shows how to use CellOmicsR function.
 
 ```{r, include=TRUE, eval=FALSE}
 install.packages("devtools")
-
 devtools::install_github("L7991-lian/CellOmicsR")
 
 ```
 
+
+## Plot Graph Network
+
+Please note that the shape of the graph may change every time you run, so you can try multiple times to achieve the desired visualization effect.
+
+### (1)input data
+```{r}
+# 
+library(igraph)
+dataframe <- data.frame(
+  source = c("A", "A", "B", "B", "C", "C", "B", "C", "D", "E", "F", "D", "D", "F"),
+  target = c("B", "C", "D", "C", "E", "B", "A", "F", "A", "D", "E", "F", "B", "A"),
+  value = c(5, 10, 0.9, 9, 7, 6, 1, 3, 8, 3, 8, 14, 2, 5)
+)
+
+head(dataframe)
+```
+
+### (2) network graph
+```{r}
+colors <- c(A = "#EE4000", B = "#0000CD", C = "#66CC00", D = rgb(102/255,46/255,115/255), E = rgb(31/255,153/255,139/255), F = "#003366")
+
+CellOmicsR::plot_graph_network(dataframe, sendercolumn = "source", receivercolumn = "target", widthcolumn = "value", useLabels = T, threshold = 0.01, colors = colors, nodeSize = 10, vertex.label.color = "white", edge.label.color = "black", edge.label.cex = 1.2) 
+
+```
+
+
 ## plot stacked bar
 
 ### (1)input data
-
 ```{r}
-library(CellOmicsR)
+library(CellOmicsR, verbose = F)
 ```
 
 ```{r}
 # input data: a data.frame 
 cell_data <- data.frame( Sample = rep(c("Sample1", "Sample2", "Sample3"), each = 4),Type = rep(c("Type1", "Type2", "Type3", "Type4"), 3),Count = c(10, 15, 8, 6, 5, 7, 12, 9, 3, 6, 4, 11))
-```
 
-```{r}
 head(cell_data)
 ```
 
-### (2)plot
+### (2) bar plot
 ```{r, eval=TRUE}
 bar_p <- CellOmicsR::plot_stacked_bar(data = cell_data, x_col = Sample, stack_col = Count, fill_col = Type)
 
@@ -60,6 +83,6 @@ bar_p
 
 footnotes^[plot_stacked_bar will return a bar plot]
 
-> "He who gives up [code] safety for [code] speed deserves neither."
 ([via](https://github.com/L7991-lian))
 
+***END!***

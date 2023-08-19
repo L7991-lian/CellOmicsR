@@ -3,6 +3,10 @@
 CellOmicsR is a comprehensive and versatile software package designed for bioinformatics research and analysis. It provides a wide range of tools and functions to facilitate the processing, analysis, and interpretation of biological data, making it an essential resource for researchers and data scientists.
 
 
+## Plot Graph Network
+
+<img src="docs/Readme_figures/plot_graph_network.png" alt="graph plot" width="400" height="400">
+
 ## Bar plot
 
 <img src="docs/Readme_figures/stack_bar.plot.png" alt="bar plot" width="400" height="300">
@@ -14,7 +18,6 @@ CellOmicsR is a comprehensive and versatile software package designed for bioinf
 install.packages("devtools")
 devtools::install_github("L7991-lian/CellOmicsR")
 ```
-
 
 ## Tutorial
 
