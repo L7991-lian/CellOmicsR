@@ -26,10 +26,9 @@ knitr::opts_chunk$set(
 
 This vignette shows how to use CellOmicsR function.
 
-```{r, include=TRUE, eval=FALSE}
+```{r, include=TRUE, eval=FALSE, tidy=TRUE}
 install.packages("devtools")
 devtools::install_github("L7991-lian/CellOmicsR")
-
 ```
 
 
@@ -38,9 +37,7 @@ devtools::install_github("L7991-lian/CellOmicsR")
 Please note that the shape of the graph may change every time you run, so you can try multiple times to achieve the desired visualization effect.
 
 ### (1)input data
-```{r}
-# 
-library(igraph)
+```{r, tidy=TRUE}
 dataframe <- data.frame(
   source = c("A", "A", "B", "B", "C", "C", "B", "C", "D", "E", "F", "D", "D", "F"),
   target = c("B", "C", "D", "C", "E", "B", "A", "F", "A", "D", "E", "F", "B", "A"),
@@ -51,30 +48,34 @@ head(dataframe)
 ```
 
 ### (2) network graph
-```{r}
+```{r, tidy=TRUE}
 colors <- c(A = "#EE4000", B = "#0000CD", C = "#66CC00", D = rgb(102/255,46/255,115/255), E = rgb(31/255,153/255,139/255), F = "#003366")
 
 CellOmicsR::plot_graph_network(dataframe, sendercolumn = "source", receivercolumn = "target", widthcolumn = "value", useLabels = T, threshold = 0.01, colors = colors, nodeSize = 10, vertex.label.color = "white", edge.label.color = "black", edge.label.cex = 1.2) 
 
 ```
 
+### (3) Save this network graph
+```{r, tidy=TRUE, eval=FALSE}
+png("plot_graph_network.png", width = 7, height = 7)
+plot_graph_network(dataframe, sendercolumn = "source", receivercolumn = "target", widthcolumn = "value", useLabels = T, threshold = 0.01, colors = colors, nodeSize = 10, vertex.label.color = "white", edge.label.color = "black", edge.label.cex = 1.2) 
+dev.off()
+```
 
 ## plot stacked bar
 
 ### (1)input data
-```{r}
-library(CellOmicsR, verbose = F)
-```
-
-```{r}
+```{r, tidy=TRUE}
 # input data: a data.frame 
+library(tidyverse, quietly = T, verbose = F)
+
 cell_data <- data.frame( Sample = rep(c("Sample1", "Sample2", "Sample3"), each = 4),Type = rep(c("Type1", "Type2", "Type3", "Type4"), 3),Count = c(10, 15, 8, 6, 5, 7, 12, 9, 3, 6, 4, 11))
 
 head(cell_data)
 ```
 
 ### (2) bar plot
-```{r, eval=TRUE}
+```{r, eval=TRUE, tidy=TRUE}
 bar_p <- CellOmicsR::plot_stacked_bar(data = cell_data, x_col = Sample, stack_col = Count, fill_col = Type)
 
 bar_p
